@@ -1,11 +1,35 @@
 .star-rating-container {
-    display: flex;
+    display: inline-flex;
+    font-size: 24px;
+    user-select: none;
 
     .star {
-        font-size: 40px;
-    }
+        position: relative;
+        cursor: pointer;
+        transition: color 0.2s;
+        color: gray;
+        font-size: 50px;
 
-    .star.active {
-        color: yellow;
+        &:hover,
+        &.active,
+        &.half-active {
+            color: transparent;
+            text-shadow: 0 0 0 gray;
+
+            &::before {
+                content: "\2605";
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: #ff9900;
+                width: 100%;
+                display: block;
+                overflow: hidden;
+            }
+        }
+
+        &.half-active::before {
+            width: 50%;
+        }
     }
 }
